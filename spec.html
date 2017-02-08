@@ -1,40 +1,40 @@
 <!DOCTYPE html>
-<meta charset="ascii">
+<meta charset="utf-8">
 <link rel="icon" href="img/favicon.ico">
 <link href="ecmarkup.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
 <script src="ecmarkup.js"></script>
 <script>
-  if (location.hostname === 'tc39.github.io' && location.protocol !== 'https:') {
+  if (location.hostname === 'h5js.github.io' && location.protocol !== 'https:') {
     location.protocol = 'https:';
   }
 </script>
 <pre class=metadata>
-  title: ECMAScript&reg; 2017 Language Specification
+  title: ECMAScript&reg; 2017 语言规范
   shortname: ECMA-262
   status: draft
-  location: https://tc39.github.io/ecma262/
+  location: https://h5js.github.io/ecma262/
 </pre>
 <emu-intro id="sec-intro">
-  <h1>Introduction</h1>
-  <p>This Ecma Standard defines the ECMAScript 2017 Language. It is the eighth edition of the ECMAScript Language Specification. Since publication of the first edition in 1997, ECMAScript has grown to be one of the world's most widely used general-purpose programming languages. It is best known as the language embedded in web browsers but has also been widely adopted for server and embedded applications.</p>
-  <p>ECMAScript is based on several originating technologies, the most well-known being JavaScript (Netscape) and JScript (Microsoft). The language was invented by Brendan Eich at Netscape and first appeared in that company's Navigator 2.0 browser. It has appeared in all subsequent browsers from Netscape and in all browsers from Microsoft starting with Internet Explorer 3.0.</p>
-  <p>The development of the ECMAScript Language Specification started in November 1996. The first edition of this Ecma Standard was adopted by the Ecma General Assembly of June 1997.</p>
-  <p>That Ecma Standard was submitted to ISO/IEC JTC 1 for adoption under the fast-track procedure, and approved as international standard ISO/IEC 16262, in April 1998. The Ecma General Assembly of June 1998 approved the second edition of ECMA-262 to keep it fully aligned with ISO/IEC 16262. Changes between the first and the second edition are editorial in nature.</p>
-  <p>The third edition of the Standard introduced powerful regular expressions, better string handling, new control statements, try/catch exception handling, tighter definition of errors, formatting for numeric output and minor changes in anticipation of future language growth. The third edition of the ECMAScript standard was adopted by the Ecma General Assembly of December 1999 and published as ISO/IEC 16262:2002 in June 2002.</p>
-  <p>After publication of the third edition, ECMAScript achieved massive adoption in conjunction with the World Wide Web where it has become the programming language that is supported by essentially all web browsers. Significant work was done to develop a fourth edition of ECMAScript. However, that work was not completed and not published as the fourth edition of ECMAScript but some of it was incorporated into the development of the sixth edition.</p>
-  <p>The fifth edition of ECMAScript (published as ECMA-262 5<sup>th</sup> edition) codified de facto interpretations of the language specification that have become common among browser implementations and added support for new features that had emerged since the publication of the third edition. Such features include accessor properties, reflective creation and inspection of objects, program control of property attributes, additional array manipulation functions, support for the JSON object encoding format, and a strict mode that provides enhanced error checking and program security. The Fifth Edition was adopted by the Ecma General Assembly of December 2009.</p>
-  <p>The fifth Edition was submitted to ISO/IEC JTC 1 for adoption under the fast-track procedure, and approved as international standard ISO/IEC 16262:2011. Edition 5.1 of the ECMAScript Standard incorporated minor corrections and is the same text as ISO/IEC 16262:2011. The 5.1 Edition was adopted by the Ecma General Assembly of June 2011.</p>
-  <p>Focused development of the sixth edition started in 2009, as the fifth edition was being prepared for publication. However, this was preceded by significant experimentation and language enhancement design efforts dating to the publication of the third edition in 1999. In a very real sense, the completion of the sixth edition is the culmination of a fifteen year effort. The goals for this addition included providing better support for large applications, library creation, and for use of ECMAScript as a compilation target for other languages. Some of its major enhancements included modules, class declarations, lexical block scoping, iterators and generators, promises for asynchronous programming, destructuring patterns, and proper tail calls. The ECMAScript library of built-ins was expanded to support additional data abstractions including maps, sets, and arrays of binary numeric values as well as additional support for Unicode supplemental characters in strings and regular expressions. The built-ins were also made extensible via subclassing. The sixth edition provides the foundation for regular, incremental language and library enhancements. The sixth edition was adopted by the General Assembly of June 2015.</p>
-  <p>This ECMAScript specification is the first ECMAScript edition released under Ecma TC39's new yearly release cadence and open development process. A plain-text source document was built from the ECMAScript 2015 source document to serve as the base for further development entirely on GitHub. Over the year of this standard's development, hundreds of pull requests and issues were filed representing thousands of bug fixes, editorial fixes and other improvements. Additionally, numerous software tools were developed to aid in this effort including Ecmarkup, Ecmarkdown, and Grammarkdown. This specification also includes support for a new exponentiation operator and adds a new method to Array.prototype called `includes`.</p>
-  <p>Dozens of individuals representing many organizations have made very significant contributions within Ecma TC39 to the development of this edition and to the prior editions. In addition, a vibrant community has emerged supporting TC39's ECMAScript efforts. This community has reviewed numerous drafts, filed thousands of bug reports, performed implementation experiments, contributed test suites, and educated the world-wide developer community about ECMAScript. Unfortunately, it is impossible to identify and acknowledge every person and organization who has contributed to this effort.</p>
+  <h1>简介</h1>
+  <p>本 Ecma 标准定义 ECMAScript 2017 语言。这是 ECMAScript 语言规范的第八个版本。自从 1997 年发布第一版以来，ECMAScript已经发展成为世界上最广泛使用的通用编程语言之一。 它不但是广为人知的浏览器嵌入语言，也已经广泛应用于服务器和嵌入式应用程序。</p>
+  <p>ECMAScript 源于几种基础技术，最着名的是 JavaScript（Netscape）和 JScript（Microsoft）。该语言由 Netscape 公司的 Brendan Eich 发明，并首次出现在该公司的 Navigator 2.0 浏览器中。后来，它出现在 Netscape 所有后续版本的浏览器中，以及从 Internet Explorer 3.0 开始的所有微软的浏览器中。</p>
+  <p>ECMAScript 语言规范的开发于 1996 年 11 月开始。该 Ecma 标准的第一版在 1997 年 6 月的 Ecma 大会上通过。</p>
+  <p>Ecma 标准已提交 ISO/IEC JTC 1，以便在快速通道程序下通过，并于 1998 年 4 月被批准为国际标准 ISO/IEC 16262。1998 年 6 月的 Ecma 大会批准了 ECMA-262 的第二版，使其与 ISO/IEC 16262 完全一致。第一版和第二版之间的区别只是编辑性的修改。</p>
+  <p>标准的第三版引入了强大的正则表达式、更好的字符串处理、新的控制语句、try/catch 异常处理、更严格的错误定义、数字输出的格式化，以及未来语言演进可预期的微小变化。ECMAScript 标准的第三版在 1999 年 12 月的 Ecma 大会上通过，并于 2002 年 6 月作为 ISO/IEC 16262:2002 出版。</p>
+  <p>第三版出版后，ECMAScript 广泛应用于互联网，已基本上成为由所有 WEB 浏览器支持的编程语言。第四版的 ECMAScript 花费了大量的开发工作。然而，这项工作没有完成，也没有作为 ECMAScript 的第四版出版，但其中一些内容已纳入第六版的开发。</p>
+  <p>ECMAScript 的第五版（已作为 ECMA-262 第 5 版出版）编撰了对于语言规范的错误解释，这些解释在浏览器实现中已经很普遍，并且增加了对于从自从第三版发布之后出现的新特征支持。这些新功能包括属性访问器、反射创建和对象检视、属性特性的编程控制、数组附加的操作函数、JSON 对象编码格式支持，以及提供增强的错误检查和程序安全性的严格模式。第五版在 2009 年 12 月的 Ecma 大会上通过。</p>
+  <p>第五版通过快速通道程序提交给 ISO/IEC JTC 1，并被批准为国际标准 ISO/IEC 16262:2011。ECMAScript 标准的 5.1 版包含了一些小修正，与 ISO/IEC 16262:2011 相同。5.1 版在 2011 年 6 月的 Ecma 大会上通过。</p>
+  <p>第五版准备出版的同时，第六版的重点开发已于 2009 年展开。然而，早在 1999 年第三版出版之前，就进行了大量的实验和语言改进设计工作。从真正意义上讲，第六版的完成是十五年努力的成果。这些成果的目标包括为大型应用程序和程序库的创建，以及把 ECMAScript 作为其他语言的编译目标语言，提供更好的支持。其主要增强包括模块、类声明、块作用域、迭代和生成器、异步编程的 Promise、解构模式和尾调用优化。ECMAScript 还扩展了内置函数库以支持其他抽象数据结构，包括映射 (Map)、集合 (Set) 和二进制数字数组，以及对字符串和正则表达式中的 Unicode 增补字符的附加支持，内置函数也有相应扩展。第六版为规范和演进语言以及程序库增强提供了基础。第六版在 2015 年 6 月的大会上通过。</p>
+  <p>本 ECMAScript 规范是在 Ecma TC39 新的年度发布节奏和开放开发过程下发布的第一个 ECMAScript 版本。此规范的纯文本文档是从 ECMAScript 2015 源文档构建的，其将作为完全在 GitHub 上进一步开发的基础。在本标准开发的一年中，提交了数百个请求和问题，处理了数千个错误修复、编辑修复和其他改进。此外，开发了许多软件工具来辅助处理这项工作，包括 Ecmarkup、Ecmarkdown 和 Grammarkdown。本规范还新增对乘方运算符的支持，并给 Array.prototype 添加一个名为 `includes` 的新方法。</p>
+  <p>代表多个组织的若干人员在为 Ecma TC39 工作，为此版本和以前版本的开发都作出了非常重要的贡献。此外，一个充满活力的社区已经出现并非常尽力地支持 TC39 的 ECMAScript 工作。该社区审查了许多草案、提交了数千个错误报告、做实验、贡献测试套件，并向世界各地的开发者社区传播 ECMAScript。遗憾的是，我们不能识别和认识为这一努力做出贡献的每个人和组织。</p>
   <p>
     Allen Wirfs-Brock<br>
-    ECMA-262, 6<sup>th</sup> Edition Project Editor
+    ECMA-262，第六版 项目编辑
   </p>
   <p>
     Brian Terlson<br>
-    ECMA-262, 7<sup>th</sup> Edition Project Editor
+    ECMA-262, 第七版 项目编辑
   </p>
 </emu-intro>
 
