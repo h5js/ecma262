@@ -40,25 +40,25 @@
 
 <!-- es6num="1" -->
 <emu-clause id="sec-scope">
-  <h1>Scope</h1>
-  <p>This Standard defines the ECMAScript 2017 general-purpose programming language.</p>
+  <h1>范围</h1>
+  <p>本标准定义了 ECMAScript 2017 通用编程语言。</p>
 </emu-clause>
 
 <!-- es6num="2" -->
 <emu-clause id="sec-conformance">
-  <h1>Conformance</h1>
-  <p>A conforming implementation of ECMAScript must provide and support all the types, values, objects, properties, functions, and program syntax and semantics described in this specification.</p>
-  <p>A conforming implementation of ECMAScript must interpret source text input in conformance with the latest version of the Unicode Standard and ISO/IEC 10646.</p>
-  <p>A conforming implementation of ECMAScript that provides an application programming interface that supports programs that need to adapt to the linguistic and cultural conventions used by different human languages and countries must implement the interface defined by the most recent edition of ECMA-402 that is compatible with this specification.</p>
-  <p>A conforming implementation of ECMAScript may provide additional types, values, objects, properties, and functions beyond those described in this specification. In particular, a conforming implementation of ECMAScript may provide properties not described in this specification, and values for those properties, for objects that are described in this specification.</p>
-  <p>A conforming implementation of ECMAScript may support program and regular expression syntax not described in this specification. In particular, a conforming implementation of ECMAScript may support program syntax that makes use of the &ldquo;future reserved words&rdquo; listed in subclause <emu-xref href="#sec-future-reserved-words"></emu-xref> of this specification.</p>
-  <p>A conforming implementation of ECMAScript must not implement any extension that is listed as a Forbidden Extension in subclause <emu-xref href="#sec-forbidden-extensions"></emu-xref>.</p>
+  <h1>一致性</h1>
+  <p>ECMAScript 的一致性实现必须提供并支持本规范中描述的所有类型、值、对象、属性、函数、程序语法和语义。</p>
+  <p>ECMAScript 的一致性实现必须能解释符合最新版本的 Unicode 标准和 ISO/IEC 10646 源文本输入。</p>
+  <p>支持适用于不同人类语言和国家的传统和文化编程接口的 ECMAScript 一致性实现，必须实现与本规范兼容的最新 ECMA-402 版定义的接口。</p>
+  <p>ECMAScript 的一致性实现可以提供超出本规范中描述的附加类型、值、对象、属性和函数。特定情况下，ECMAScript 的一致性实现可以提供本规范中未描述的属性、以及用于本规范中已描述的对象的那些属性值。
+  <p>ECMAScript 的一致的实现可以支持本规范中未描述的程序和正则表达式语法。特定情况下，ECMAScript 的一致的实现可以支持使用本规范 <emu-xref href="#sec-future-reserved-words"></emu-xref> 中列示的 “未来保留字” 的程序语法。</p>
+  <p>ECMAScript 的一致性实现不得实现任何在 <emu-xref href="#sec-forbidden-extensions"></emu-xref> 中列为禁用的扩展。</p>
 </emu-clause>
 
 <!-- es6num="3" -->
 <emu-clause id="sec-normative-references">
-  <h1>Normative References</h1>
-  <p>The following referenced documents are indispensable for the application of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
+  <h1>规范参考文献</h1>
+  <p>下列参考文献对于本文档的应用是必要的。对注明日期的参考文献，只引用对应版本。对于未注明日期的参考文献，引用文献的最新版本（包括任何修订）。</p>
   <p>ISO/IEC 10646:2003: <i>Information Technology &ndash; Universal Multiple-Octet Coded Character Set (UCS) plus Amendment 1:2005, Amendment 2:2006, Amendment 3:2008, and Amendment 4:2008</i>, plus additional amendments and corrigenda, or successor</p>
   <p>ECMA-402, <i>ECMAScript 2015 Internationalization API Specification</i>.
     <br>
@@ -70,13 +70,13 @@
 
 <!-- es6num="4" -->
 <emu-clause id="sec-overview">
-  <h1>Overview</h1>
-  <p>This section contains a non-normative overview of the ECMAScript language.</p>
-  <p>ECMAScript is an object-oriented programming language for performing computations and manipulating computational objects within a host environment. ECMAScript as defined here is not intended to be computationally self-sufficient; indeed, there are no provisions in this specification for input of external data or output of computed results. Instead, it is expected that the computational environment of an ECMAScript program will provide not only the objects and other facilities described in this specification but also certain environment-specific objects, whose description and behaviour are beyond the scope of this specification except to indicate that they may provide certain properties that can be accessed and certain functions that can be called from an ECMAScript program.</p>
-  <p>ECMAScript was originally designed to be used as a scripting language, but has become widely used as a general-purpose programming language. A <em>scripting language</em> is a programming language that is used to manipulate, customize, and automate the facilities of an existing system. In such systems, useful functionality is already available through a user interface, and the scripting language is a mechanism for exposing that functionality to program control. In this way, the existing system is said to provide a host environment of objects and facilities, which completes the capabilities of the scripting language. A scripting language is intended for use by both professional and non-professional programmers.</p>
-  <p>ECMAScript was originally designed to be a <em>Web scripting language</em>, providing a mechanism to enliven Web pages in browsers and to perform server computation as part of a Web-based client-server architecture. ECMAScript is now used to provide core scripting capabilities for a variety of host environments. Therefore the core language is specified in this document apart from any particular host environment.</p>
-  <p>ECMAScript usage has moved beyond simple scripting and it is now used for the full spectrum of programming tasks in many different environments and scales. As the usage of ECMAScript has expanded, so has the features and facilities it provides. ECMAScript is now a fully featured general-purpose programming language.</p>
-  <p>Some of the facilities of ECMAScript are similar to those used in other programming languages; in particular C, Java&trade;, Self, and Scheme as described in:</p>
+  <h1>概述</h1>
+  <p>本节包含 ECMAScript 语言的非规范性概述。</p>
+  <p>ECMAScript 是一种面向对象的编程语言，用于宿主环境中执行计算和操作计算对象。这里定义的 ECMAScript 不是计算自足的；实际上，在本规范中没有关于外部数据输入或计算结果输出的规定。相反，期望 ECMAScript 程序的运行环境不仅能提供本规范中描述的对象和其他设施，而且还可提供某些环境特定的对象，其描述和行为超出本规范的范围除非要说明它们能提供 ECMAScript 程序可访问的特定属性和可调用的特定函数。</p>
+  <p>ECMAScript 最初被设计为一种脚本语言，但现已成为广泛使用的通用编程语言。 <em>脚本语言</em>是一种可操纵、定制和自动处理现存系统设施的编程语言。在这样的系统中，有用的功能已可通过用户接口获得，而脚本语言是程序控制能展现这些功能的机制。以这种方式，可称之为现存系统提供了包含对象和设施的宿主环境，其成就了脚本语言的能力。脚本语言旨在供专业和非专业程序员使用。</p>
+  <p>ECMAScript 最初被设计为一种 <em>WEB 脚本语言</em>，以提供在浏览器中激活网页的机制，以及在 Client-Server 体系结构中执行服务器计算。ECMAScript 现已为各种宿主环境提供核心脚本功能。 因此，除了任何特定宿主环境之外，本文档还规定了核心语言。</p>
+  <p>ECMAScript 的使用已经超越了简单的脚本，现已在许多不同的环境和规模的编程任务中全方位使用。随着 ECMAScript 广泛应用，其提供的功能和设施也随之增强。ECMAScript 现已成为功能完善的通用编程语言。</p>
+  <p>ECMAScript 的一些设施与其他编程语言中使用的设施类似；特别是 C、Java&trade;、Self 和Scheme，如下所述：</p>
   <p>ISO/IEC 9899:1996, <i>Programming Languages &ndash; C</i>.</p>
   <p>Gosling, James, Bill Joy and Guy Steele. <i>The Java<sup>&trade;</sup> Language Specification</i>. Addison Wesley Publishing Co., 1996.</p>
   <p>Ungar, David, and Smith, Randall B. Self: The Power of Simplicity. <i>OOPSLA '87 Conference Proceedings</i>, pp. 227-241, Orlando, FL, October 1987.</p>
