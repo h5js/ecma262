@@ -84,321 +84,321 @@
 
   <!-- es6num="4.1" -->
   <emu-clause id="sec-web-scripting">
-    <h1>Web Scripting</h1>
-    <p>A web browser provides an ECMAScript host environment for client-side computation including, for instance, objects that represent windows, menus, pop-ups, dialog boxes, text areas, anchors, frames, history, cookies, and input/output. Further, the host environment provides a means to attach scripting code to events such as change of focus, page and image loading, unloading, error and abort, selection, form submission, and mouse actions. Scripting code appears within the HTML and the displayed page is a combination of user interface elements and fixed and computed text and images. The scripting code is reactive to user interaction and there is no need for a main program.</p>
-    <p>A web server provides a different host environment for server-side computation including objects representing requests, clients, and files; and mechanisms to lock and share data. By using browser-side and server-side scripting together, it is possible to distribute computation between the client and server while providing a customized user interface for a Web-based application.</p>
-    <p>Each Web browser and server that supports ECMAScript supplies its own host environment, completing the ECMAScript execution environment.</p>
+    <h1>WEB 脚本</h1>
+    <p>WEB 浏览器提供了 ECMAScript 宿主环境用于客户端的计算，包括诸如表示窗口、菜单、弹出窗口、对话框，文本框、锚点、帧、浏览历史、Cookie 和 输入输出等对象。此外，宿主环境还提供了方法，可将脚本代码关联到诸如焦点改变、页面和图像加载卸载、错误和中止、选择、表单提交，以及鼠标动作之类的事件。脚本代码嵌在HTML中，而显示的页面是用户界面元素和与固定和计算的文本和图像的组合。脚本代码响应用户交互，因而无需主程序。</p>
+    <p>WEB 服务器为服务器端计算提供了不同的宿主环境，包括表示请求、客户端和文件等对象，以及锁定和共享数据的机制。通过配合使用浏览器端和服务器端脚本，可以在客户端和服务器之间分配计算，同时为 WEB 应用程序提供定制用户界面。</p>
+    <p>支持 ECMAScript 的 WEB 浏览器和服务器都提供其自身的宿主环境，成为 ECMAScript 执行环境。</p>
   </emu-clause>
 
   <!-- es6num="4.2" -->
   <emu-clause id="sec-ecmascript-overview">
-    <h1>ECMAScript Overview</h1>
-    <p>The following is an informal overview of ECMAScript&mdash;not all parts of the language are described. This overview is not part of the standard proper.</p>
-    <p>ECMAScript is object-based: basic language and host facilities are provided by objects, and an ECMAScript program is a cluster of communicating objects. In ECMAScript, an <em>object</em> is a collection of zero or more <em>properties</em> each with <em>attributes</em> that determine how each property can be used&mdash;for example, when the Writable attribute for a property is set to *false*, any attempt by executed ECMAScript code to assign a different value to the property fails. Properties are containers that hold other objects, <em>primitive values</em>, or <em>functions</em>. A primitive value is a member of one of the following built-in types: <b>Undefined</b>, <b>Null</b>, <b>Boolean</b>, <b>Number</b>, <b>String</b>, and <b>Symbol;</b> an object is a member of the built-in type <b>Object</b>; and a function is a callable object. A function that is associated with an object via a property is called a <em>method</em>.</p>
-    <p>ECMAScript defines a collection of <em>built-in objects</em> that round out the definition of ECMAScript entities. These built-in objects include the global object; objects that are fundamental to the runtime semantics of the language including `Object`, `Function`, `Boolean`, `Symbol`, and various `Error` objects; objects that represent and manipulate numeric values including `Math`, `Number`, and `Date`; the text processing objects `String` and `RegExp`; objects that are indexed collections of values including `Array` and nine different kinds of Typed Arrays whose elements all have a specific numeric data representation; keyed collections including `Map` and `Set` objects; objects supporting structured data including the `JSON` object, `ArrayBuffer`, `SharedArrayBuffer`, and `DataView`; objects supporting control abstractions including generator functions and `Promise` objects; and, reflection objects including `Proxy` and `Reflect`.</p>
-    <p>ECMAScript also defines a set of built-in <em>operators</em>. ECMAScript operators include various unary operations, multiplicative operators, additive operators, bitwise shift operators, relational operators, equality operators, binary bitwise operators, binary logical operators, assignment operators, and the comma operator.</p>
-    <p>Large ECMAScript programs are supported by <em>modules</em> which allow a program to be divided into multiple sequences of statements and declarations. Each module explicitly identifies declarations it uses that need to be provided by other modules and which of its declarations are available for use by other modules.</p>
-    <p>ECMAScript syntax intentionally resembles Java syntax. ECMAScript syntax is relaxed to enable it to serve as an easy-to-use scripting language. For example, a variable is not required to have its type declared nor are types associated with properties, and defined functions are not required to have their declarations appear textually before calls to them.</p>
+    <h1>ECMAScript 概述</h1>
+    <p>以下是 ECMAScript 的非正式概述，未描述语言的全部。此概述不是标准的一部分。</p>
+    <p>ECMAScript 是基于对象的：基本语言和宿主功能都是由对象提供的，ECMAScript 程序就是相互通信的对象集群。在ECMAScript中，<em>对象</em> 就是零到多个 <em>属性</em> 的集合，每个属性具有其如何使用的 <em>特性</em>，例如，当属性的 Writable 属性设置为 *false* 时，ECMAScript 运行代码向该属性赋与不同值的任何尝试都将失败。属性是容纳其他对象、<em>原始值</em> 或 <em>函数</em> 的容器。原始值是这些内置类型成员之一：<b>Undefined</b>、<b>Null</b>、<b>Boolean</b>、<b>Number</b>、<b>String</b> 和 <b>Symbol</b>，对象是内置类型 <b>Object</b> 的成员，而函数是可调用对象。通过属性与对象相关联的函数称为 <em>方法</em>。</p>
+    <p>ECMAScript 定义一组 <em>内置对象</em>，形成 ECMAScript 实体的定义。这些内置对象包括：全局对象；语言运行机制的基础对象，包括 `Object`、`Function`、`Boolean`、`Symbol` 和若干 `Error` 对象；表示和操纵数值的对象，包括 `Math`、`Number` 和 `Date`；文本处理对象 `String` 和 `RegExp`；索引集合对象，包括 `Array` 和九种不同的特定数值元素的类型数组；键值集合，包括 `Map` 和 `Set` 对象；支持结构化数据的对象，包括 `JSON` 对象、`ArrayBuffer`、`SharedArrayBuffer` 和 `DataView`；支持程序运行控制的抽象对象，包括生成器函数和 `Promise` 对象；以及反射对象，包括 `Proxy` 和 `Reflect`。</p>
+    <p>ECMAScript 还定义了一组内置的 <em>运算符</em>。ECMAScript 运算符包括各种一元运算符、乘法运算符、加法运算符、位移运算符、关系运算符、相等运算符、二进制位运算符、二进制逻辑运算符、赋值运算符和逗号运算符。</p>
+    <p>大型的 ECMAScript 程序可由 <em>模块</em> 支持，允许将程序被分解为多个语句和声明的子程序。每个模块显式地标明其使用的其他模块提供的声明，以及其哪些声明可供其他模块使用。</p>
+    <p>ECMAScript 语法故意使用类似于 Java 的语法。ECMAScript 的变通语法使其成为更易于使用的脚本语言。例如，变量不要求有声明的类型，也无需属性相关的类型，并且定义的函数在调用之前不需要字面上的声明。</p>
 
     <!-- es6num="4.2.1" -->
     <emu-clause id="sec-objects">
-      <h1>Objects</h1>
-      <p>Even though ECMAScript includes syntax for class definitions, ECMAScript objects are not fundamentally class-based such as those in C++, Smalltalk, or Java. Instead objects may be created in various ways including via a literal notation or via <em>constructors</em> which create objects and then execute code that initializes all or part of them by assigning initial values to their properties. Each constructor is a function that has a property named `"prototype"` that is used to implement <em>prototype-based inheritance</em> and <em>shared properties</em>. Objects are created by using constructors in <b>new</b> expressions; for example, `new Date(2009,11)` creates a new Date object. Invoking a constructor without using <b>new</b> has consequences that depend on the constructor. For example, `Date()` produces a string representation of the current date and time rather than an object.</p>
-      <p>Every object created by a constructor has an implicit reference (called the object's <em>prototype</em>) to the value of its constructor's `"prototype"` property. Furthermore, a prototype may have a non-null implicit reference to its prototype, and so on; this is called the <em>prototype chain</em>. When a reference is made to a property in an object, that reference is to the property of that name in the first object in the prototype chain that contains a property of that name. In other words, first the object mentioned directly is examined for such a property; if that object contains the named property, that is the property to which the reference refers; if that object does not contain the named property, the prototype for that object is examined next; and so on.</p>
-      <emu-figure id="figure-1" caption="Object/Prototype Relationships">
+      <h1>对象</h1>
+      <p>虽然 ECMAScript 也包含类定义的语法，但 ECMAScript 对象本质上却不像 C++、Smalltalk 或 Java 那样都基于类的。相反，对象可以用各种方式创建，包括通过字面量表达来创建，或通过 <em>构造函数</em> 来创建，其可创建对象并执行代码来给对象属性赋予初始值以初始化对象或的全部或的部分。每个构造函数都是一个函数，其具有名为 `"prototype"` 的属性，用于实现 <em>基于原型的继承</em> 和 <em>共享属性</em>。用构造函数创建对象需要将其放在 <b>new</b> 表达式中，例如，`new Date(2009,11)` 创建一个新的 Date 对象。不使用 <b>new</b> 调用构造函数的含义取决于构造函数，例如，`Date()` 生成表示当前日期合适时间的字符串而不是对象。</p>
+      <p>由构造函数创建的每个对象都有一个与其构造函数 `"prototype"` 属性相关的隐含引用值（称为对象的 <em>原型</em> ）。此外，原型对象自身还可具有其非空的隐式原型引用等等，这就是所谓的 <em>原型链</em> 。当在对象中进行引用查找时，该引用总是指向在原型链中找到的包含该名称属性的第一个对象的同名属性。换句话说，首先检查直接对应对象属性；若该对象包含此命名属性，就引用其对应的属性；若该对象不包含此命名属性，则进一步检查该对象的原型对象；以此类推。</p>
+      <emu-figure id="figure-1" caption="对象/原型 关系">
         <object data="img/figure-1.svg" height="354" type="image/svg+xml" width="719"> <img alt="An image of lots of boxes and arrows." height="354" src="img/figure-1.png" width="719"> </object>
       </emu-figure>
-      <p>In a class-based object-oriented language, in general, state is carried by instances, methods are carried by classes, and inheritance is only of structure and behaviour. In ECMAScript, the state and methods are carried by objects, while structure, behaviour, and state are all inherited.</p>
-      <p>All objects that do not directly contain a particular property that their prototype contains share that property and its value. Figure 1 illustrates this:</p>
-      <p><b>CF</b> is a constructor (and also an object). Five objects have been created by using `new` expressions: <b>cf<sub>1</sub></b>, <b>cf<sub>2</sub></b>, <b>cf<sub>3</sub></b>, <b>cf<sub>4</sub></b>, and <b>cf<sub>5</sub></b>. Each of these objects contains properties named `q1` and `q2`. The dashed lines represent the implicit prototype relationship; so, for example, <b>cf<sub>3</sub></b>'s prototype is <b>CF<sub>p</sub></b>. The constructor, <b>CF</b>, has two properties itself, named `P1` and `P2`, which are not visible to <b>CF<sub>p</sub></b>, <b>cf<sub>1</sub></b>, <b>cf<sub>2</sub></b>, <b>cf<sub>3</sub></b>, <b>cf<sub>4</sub></b>, or <b>cf<sub>5</sub></b>. The property named `CFP1` in <b>CF<sub>p</sub></b> is shared by <b>cf<sub>1</sub></b>, <b>cf<sub>2</sub></b>, <b>cf<sub>3</sub></b>, <b>cf<sub>4</sub></b>, and <b>cf<sub>5</sub></b> (but not by <b>CF</b>), as are any properties found in <b>CF<sub>p</sub></b>'s implicit prototype chain that are not named `q1`, `q2`, or `CFP1`. Notice that there is no implicit prototype link between <b>CF</b> and <b>CF<sub>p</sub></b>.</p>
-      <p>Unlike most class-based object languages, properties can be added to objects dynamically by assigning values to them. That is, constructors are not required to name or assign values to all or any of the constructed object's properties. In the above diagram, one could add a new shared property for <b>cf<sub>1</sub></b>, <b>cf<sub>2</sub></b>, <b>cf<sub>3</sub></b>, <b>cf<sub>4</sub></b>, and <b>cf<sub>5</sub></b> by assigning a new value to the property in <b>CF<sub>p</sub></b>.</p>
-      <p>Although ECMAScript objects are not inherently class-based, it is often convenient to define class-like abstractions based upon a common pattern of constructor functions, prototype objects, and methods. The ECMAScript built-in objects themselves follow such a class-like pattern. Beginning with ECMAScript 2015, the ECMAScript language includes syntactic class definitions that permit programmers to concisely define objects that conform to the same class-like abstraction pattern used by the built-in objects.</p>
+      <p>在基于类的面向对象语言中，状态通常由实例承载，方法则由类承载，而继承仅仅涉及结构和行为。而在 ECMAScript 中，状态和方法都由对象承载，结构、行为和状态都是继承的。</p>
+      <p>所有不直接包含特定属性的对象，共享其原型中包含的该属性及其属性值。 图 1 说明了这一点：</p>
+      <p><b>CF</b> 是构造函数（也是一个对象）。五个对象已用 `new` 表达式创建： <b>cf<sub>1</sub></b>、<b>cf<sub>2</sub></b>、<b>cf<sub>3</sub></b>、<b>cf<sub>4</sub></b> 和 <b>cf<sub>5</sub></b>。每个对象包含名为 `q1` 和 `q2` 的属性。虚线表示隐式原型关系，例如， <b>cf<sub>3</sub></b> 的原型是 <b>CF<sub>p</sub></b>。构造函数 <b>CF</b> 自身具有两个属性，名为 `P1` 和 `P2`，其对 <b>CF<sub>p</sub></b>、 <b>cf<sub>1</sub></b>、<b>cf<sub>2</sub></b>、<b>cf<sub>3</sub></b>、<b>cf<sub>4</sub></b> 或 <b>cf<sub>5</sub></b> 都不可见。在 <b>CF<sub>p</sub></b> 中名为 `CFP1` 的属性被 <b>cf<sub>1</sub></b>、<b>cf<sub>2</sub></b>、<b>cf<sub>3</sub></b>、<b>cf<sub>4</sub></b> 和 <b>cf<sub>5</sub></b> 共享（但不被 <b>CF</b> 共享），任何在 <b>CF<sub>p</sub></b> 的隐式原型链中找到的非名为 `q1`、`q2` 或 `CFP1` 的属性也一样。注意，<b>CF</b> 和 <b>CF<sub>p</sub></b> 之间没有隐式原型连接。</p>
+      <p>与许多基于类的对象语言不同的是，通过给对象赋值可以给对象动态添加属性。因而，并不要求构造函数必须给其构造对象的所有或任一属性进行命名或赋值。在上图中，通过对 <b>CF<sub>p</sub></b> 新属性赋值，可以添加由 <b>cf<sub>1</sub></b>、<b>cf<sub>2</sub></b>、<b>cf<sub>3</sub></b>、<b>cf<sub>4</sub></b> 和 <b>cf<sub>5</sub></b> 共享的新属性。</p>
+      <p>虽然 ECMAScript 对象本质上不是基于类的，但基于构造函数、原型对象和方法等通用模式来定义与类相似的抽象数据结构常常是很方便的。ECMAScript 内置对象自身也遵循类相似的模式。从 ECMAScript 2015 开始，ECMAScript 语言包含了语法上的类定义，允许程序员简洁地定义符合内置对象使用的类相似抽象模式的对象。</p>
     </emu-clause>
 
     <!-- es6num="4.2.2" -->
     <emu-clause id="sec-strict-variant-of-ecmascript">
-      <h1>The Strict Variant of ECMAScript</h1>
-      <p>The ECMAScript Language recognizes the possibility that some users of the language may wish to restrict their usage of some features available in the language. They might do so in the interests of security, to avoid what they consider to be error-prone features, to get enhanced error checking, or for other reasons of their choosing. In support of this possibility, ECMAScript defines a strict variant of the language. The strict variant of the language excludes some specific syntactic and semantic features of the regular ECMAScript language and modifies the detailed semantics of some features. The strict variant also specifies additional error conditions that must be reported by throwing error exceptions in situations that are not specified as errors by the non-strict form of the language.</p>
-      <p>The strict variant of ECMAScript is commonly referred to as the <em>strict mode</em> of the language. Strict mode selection and use of the strict mode syntax and semantics of ECMAScript is explicitly made at the level of individual ECMAScript source text units. Because strict mode is selected at the level of a syntactic source text unit, strict mode only imposes restrictions that have local effect within such a source text unit. Strict mode does not restrict or modify any aspect of the ECMAScript semantics that must operate consistently across multiple source text units. A complete ECMAScript program may be composed of both strict mode and non-strict mode ECMAScript source text units. In this case, strict mode only applies when actually executing code that is defined within a strict mode source text unit.</p>
-      <p>In order to conform to this specification, an ECMAScript implementation must implement both the full unrestricted ECMAScript language and the strict variant of the ECMAScript language as defined by this specification. In addition, an implementation must support the combination of unrestricted and strict mode source text units into a single composite program.</p>
+      <h1>ECMAScript 的严格变体</h1>
+      <p>ECMAScript 语言认识到存在某些可能性，一些用户可能希望限制其对语言中某些可用功能的使用。他们这样做的目的可能是为了安全性，以避免其认为是容易出错的功能，获得增强的错误检查，或者出于其他自己选择的原因。为了支持这种可能性，ECMAScript 定义了语言的严格变体。语言的严格变体排除了常规 ECMAScript 语言的某些特定语法和语义功能，并修改了一些特征的详细语义。严格变体还规定了附加错误条件，在非严格形式的语言未规定为错误的情况下，其必须以抛出错误异常形式来报告。</p>
+      <p>ECMAScript 的严格变体通常被称为语言的 <em>严格模式</em> 。ECMAScript的 严格模式选择和严格模式语法和语义的使用，是在个别的 ECMAScript 源文单元级别显示做出的。因为严格模式是在语法源文单元级别进行选择的，所以严格模式仅在这样的源文单元内施加局部效果的限制。严格模式不限制或修改必须跨多个源文本单元一致地操作的 ECMAScript语义的任何方面。完整的 ECMAScript 程序可以由严格模式和非严格模式的 ECMAScript 源文单元共同组成。在这种情况下，严格模式仅应用于在严格模式源文单元中定义的实际执行代码。</p>
+      <p>为了符合本规范，ECMAScript 实现必须同时实现完全无限制的 ECMAScript 语言和本规范定义的 ECMAScript 语言的严格变体。此外，实现还必须支持将无限制和严格模式源文单元组合成单个复合程序。</p>
     </emu-clause>
   </emu-clause>
 
   <!-- es6num="4.3" -->
   <emu-clause id="sec-terms-and-definitions">
-    <h1>Terms and Definitions</h1>
-    <p>For the purposes of this document, the following terms and definitions apply.</p>
+    <h1>术语和定义</h1>
+    <p>本文档使用下列术语和定义。</p>
 
     <!-- es6num="4.3.1" -->
     <emu-clause id="sec-type">
-      <h1>type</h1>
-      <p>set of data values as defined in clause <emu-xref href="#sec-ecmascript-data-types-and-values"></emu-xref> of this specification</p>
+      <h1>类型</h1>
+      <p>数据值的集合，定义在本规范第 <emu-xref href="#sec-ecmascript-data-types-and-values"></emu-xref> 章。</p>
     </emu-clause>
 
     <!-- es6num="4.3.2" -->
     <emu-clause id="sec-primitive-value">
-      <h1>primitive value</h1>
-      <p>member of one of the types Undefined, Null, Boolean, Number, Symbol, or String as defined in clause <emu-xref href="#sec-ecmascript-data-types-and-values"></emu-xref></p>
+      <h1>原始值</h1>
+      <p>类型 Undefined、Null、Boolean、Number、Symbol 或 String 之一的成员， 定义在第 <emu-xref href="#sec-ecmascript-data-types-and-values"></emu-xref> 章。</p>
       <emu-note>
-        <p>A primitive value is a datum that is represented directly at the lowest level of the language implementation.</p>
+        <p>原始值是在语言实现的最低级表示的数据。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.3" -->
     <emu-clause id="sec-terms-and-definitions-object">
-      <h1>object</h1>
-      <p>member of the type Object</p>
+      <h1>对象</h1>
+      <p>类型 Object 的成员</p>
       <emu-note>
-        <p>An object is a collection of properties and has a single prototype object. The prototype may be the null value.</p>
+        <p>对象是属性的集合，并具有单一原型对象。原型对象可以是 null 值。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.4" -->
     <emu-clause id="sec-constructor">
-      <h1>constructor</h1>
-      <p>function object that creates and initializes objects</p>
+      <h1>构造函数</h1>
+      <p>创建和初始化对象的函数对象</p>
       <emu-note>
-        <p>The value of a constructor's `prototype` property is a prototype object that is used to implement inheritance and shared properties.</p>
+        <p>构造函数的 `prototype` 属性值是用于实现继承和共享属性的原型对象。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.5" -->
     <emu-clause id="sec-terms-and-definitions-prototype">
-      <h1>prototype</h1>
-      <p>object that provides shared properties for other objects</p>
+      <h1>原型</h1>
+      <p>为其他对象提供共享属性的对象</p>
       <emu-note>
-        <p>When a constructor creates an object, that object implicitly references the constructor's `prototype` property for the purpose of resolving property references. The constructor's `prototype` property can be referenced by the program expression <code><var>constructor</var>.prototype</code>, and properties added to an object's prototype are shared, through inheritance, by all objects sharing the prototype. Alternatively, a new object may be created with an explicitly specified prototype by using the `Object.create` built-in function.</p>
+        <p>当构造函数创建对象时，该对象隐式引用构造函数的 `prototype` 属性，以便解析属性引用。可以通过 <code><var>constructor</var>.prototype</code> 引用构造函数的原型属性，并且对象的原型上添加的属性，将通过继承被所有共享该原型的对象所共享。或者，通过使用内置的 `Object.create` 函数可创建具有显式指定原型的新对象。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.6" -->
     <emu-clause id="sec-ordinary-object">
-      <h1>ordinary object</h1>
-      <p>object that has the default behaviour for the essential internal methods that must be supported by all objects</p>
+      <h1>普通对象</h1>
+      <p>具有所有对象必须支持的基本内部方法默认行为的对象</p>
     </emu-clause>
 
     <!-- es6num="4.3.7" -->
     <emu-clause id="sec-exotic-object">
-      <h1>exotic object</h1>
-      <p>object that does not have the default behaviour for one or more of the essential internal methods</p>
+      <h1>奇异对象</h1>
+      <p>不具有某个或多个基本内部方法默认行为的对象</p>
       <emu-note>
-        <p>Any object that is not an ordinary object is an exotic object.</p>
+        <p>非普通对象的任意对象都是奇异对象。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.8" -->
     <emu-clause id="sec-standard-object">
-      <h1>standard object</h1>
-      <p>object whose semantics are defined by this specification</p>
+      <h1>标准对象</h1>
+      <p>其语义由本规范定义的对象</p>
     </emu-clause>
 
     <!-- es6num="4.3.9" -->
     <emu-clause id="sec-built-in-object">
-      <h1>built-in object</h1>
-      <p>object specified and supplied by an ECMAScript implementation</p>
+      <h1>内置对象</h1>
+      <p>ECMAScript 实现提供的特定对象</p>
       <emu-note>
-        <p>Standard built-in objects are defined in this specification. An ECMAScript implementation may specify and supply additional kinds of built-in objects. A <em>built-in constructor</em> is a built-in object that is also a constructor.</p>
+        <p>标准内置对象在本规范定义。ECMAScript 实现可以指定和提供附加种类的内置对象。<em>内置构造函数</em> 是内置对象也是构造函数。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.10" -->
     <emu-clause id="sec-undefined-value">
-      <h1>undefined value</h1>
-      <p>primitive value used when a variable has not been assigned a value</p>
+      <h1>undefined 值</h1>
+      <p>当变量还未被赋值时的原始值</p>
     </emu-clause>
 
     <!-- es6num="4.3.11" -->
     <emu-clause id="sec-terms-and-definitions-undefined-type">
-      <h1>Undefined type</h1>
-      <p>type whose sole value is the *undefined* value</p>
+      <h1>Undefined 类型</h1>
+      <p>其唯一值是 *undefined* 值的类型</p>
     </emu-clause>
 
     <!-- es6num="4.3.12" -->
     <emu-clause id="sec-null-value">
-      <h1>null value</h1>
-      <p>primitive value that represents the intentional absence of any object value</p>
+      <h1>null 值</h1>
+      <p>表示有意缺少任意对象的值</p>
     </emu-clause>
 
     <!-- es6num="4.3.13" -->
     <emu-clause id="sec-terms-and-definitions-null-type">
-      <h1>Null type</h1>
-      <p>type whose sole value is the *null* value</p>
+      <h1>Null 类型</h1>
+      <p>其唯一值是 *null* 值的类型</p>
     </emu-clause>
 
     <!-- es6num="4.3.14" -->
     <emu-clause id="sec-terms-and-definitions-boolean-value">
-      <h1>Boolean value</h1>
-      <p>member of the Boolean type</p>
+      <h1>Boolean 值</h1>
+      <p>Boolean 类型的成员</p>
       <emu-note>
-        <p>There are only two Boolean values, *true* and *false*</p>
+        <p>仅有两个布尔值，*true* 和 *false*</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.15" -->
     <emu-clause id="sec-terms-and-definitions-boolean-type">
-      <h1>Boolean type</h1>
-      <p>type consisting of the primitive values *true* and *false*</p>
+      <h1>Boolean 类型</h1>
+      <p>组成原始值 *true* 和 *false* 的类型</p>
     </emu-clause>
 
     <!-- es6num="4.3.16" -->
     <emu-clause id="sec-boolean-object">
-      <h1>Boolean object</h1>
-      <p>member of the Object type that is an instance of the standard built-in `Boolean` constructor</p>
+      <h1>Boolean 对象</h1>
+      <p>Object 类型的成员，其是标准内置构造函数 `Boolean` 的实例。</p>
       <emu-note>
-        <p>A Boolean object is created by using the `Boolean` constructor in a `new` expression, supplying a Boolean value as an argument. The resulting object has an internal slot whose value is the Boolean value. A Boolean object can be coerced to a Boolean value.</p>
+        <p>Boolean 对象是在 `new` 表达式中使用 `Boolean` 构造函数并指定一个 Boolean 值作为参数来创建的。生成的对象有一个内部槽，其值为 Boolean 值。Boolean 对象可以强制转换为 Boolean 值。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.17" -->
     <emu-clause id="sec-terms-and-definitions-string-value">
-      <h1>String value</h1>
-      <p>primitive value that is a finite ordered sequence of zero or more 16-bit unsigned integer</p>
+      <h1>String 值</h1>
+      <p>零个到多个 16 位无符号整数的有限序列的原始值</p>
       <emu-note>
-        <p>A String value is a member of the String type. Each integer value in the sequence usually represents a single 16-bit unit of UTF-16 text. However, ECMAScript does not place any restrictions or requirements on the values except that they must be 16-bit unsigned integers.</p>
+        <p>String 值是 String 类型的成员。序列中得每一个整数通常表示 UTF-16 文本中的一个单一的 16 位单元。然而，ECMAScript 并不对该值进行任何限制或要求，除非其必须是 16 位无符号整数。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.18" -->
     <emu-clause id="sec-terms-and-definitions-string-type">
-      <h1>String type</h1>
-      <p>set of all possible String values</p>
+      <h1>String 类型</h1>
+      <p>所有可能的 String 值的集合</p>
     </emu-clause>
 
     <!-- es6num="4.3.19" -->
     <emu-clause id="sec-string-object">
-      <h1>String object</h1>
-      <p>member of the Object type that is an instance of the standard built-in `String` constructor</p>
+      <h1>String 对象</h1>
+      <p>Object 类型的成员，是标准内置构造函数 `String` 的实例</p>
       <emu-note>
-        <p>A String object is created by using the `String` constructor in a `new` expression, supplying a String value as an argument. The resulting object has an internal slot whose value is the String value. A String object can be coerced to a String value by calling the `String` constructor as a function (<emu-xref href="#sec-string-constructor-string-value"></emu-xref>).</p>
+        <p>String 对象是通过在 `new` 表达式中使用 `String` 构造函数并指定一个 String 值作为参数来创建的。生成的对象有一个内部槽，其值为 String 值。通过将 `String` 构造函数作为函数来调用（<emu-xref href="#sec-string-constructor-string-value"></emu-xref>），可将 String 对象强制转换为 String 值。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.20" -->
     <emu-clause id="sec-terms-and-definitions-number-value">
-      <h1>Number value</h1>
-      <p>primitive value corresponding to a double-precision 64-bit binary format IEEE 754-2008 value</p>
+      <h1>Number 值</h1>
+      <p>对应于双精度 64 位二进制格式 IEEE 754-2008 值的原始值</p>
       <emu-note>
-        <p>A Number value is a member of the Number type and is a direct representation of a number.</p>
+        <p>Number 值是 Number 类型的成员，并且也是数字的直接表示。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.21" -->
     <emu-clause id="sec-terms-and-definitions-number-type">
-      <h1>Number type</h1>
-      <p>set of all possible Number values including the special &ldquo;Not-a-Number&rdquo; (NaN) value, positive infinity, and negative infinity</p>
+      <h1>Number 类型</h1>
+      <p>所有可能的 Number 值的集合，包括特殊的 &ldquo;非数字&rdquo; (NaN) 值、正无穷大和负无穷大</p>
     </emu-clause>
 
     <!-- es6num="4.3.22" -->
     <emu-clause id="sec-number-object">
-      <h1>Number object</h1>
-      <p>member of the Object type that is an instance of the standard built-in `Number` constructor</p>
+      <h1>Number 对象</h1>
+      <p>Object 类型的成员，是标准内置构造函数 `Number` 的实例</p>
       <emu-note>
-        <p>A Number object is created by using the `Number` constructor in a `new` expression, supplying a number value as an argument. The resulting object has an internal slot whose value is the number value. A Number object can be coerced to a number value by calling the `Number` constructor as a function (<emu-xref href="#sec-number-constructor-number-value"></emu-xref>).</p>
+        <p>Number 对象是在 `new` 表达式中使用 `Number` 构造函数并指定一个 Number 值作为参数来创建的。生成的对象有一个内部槽，其值为 Number 值。通过将 `Number` 构造函数作为函数来调用（<emu-xref href="#sec-number-constructor-number-value"></emu-xref>），可将 Number 对象强制转换为 Number 值。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.23" -->
     <emu-clause id="sec-terms-and-definitions-infinity">
       <h1>Infinity</h1>
-      <p>number value that is the positive infinite number value</p>
+      <p>正的无限大的数值</p>
     </emu-clause>
 
     <!-- es6num="4.3.24" -->
     <emu-clause id="sec-terms-and-definitions-nan">
       <h1>NaN</h1>
-      <p>number value that is an IEEE 754-2008 &ldquo;Not-a-Number&rdquo; value</p>
+      <p>IEEE 754-2008 &ldquo;非数字&rdquo; 值的数值</p>
     </emu-clause>
 
     <!-- es6num="4.3.25" -->
     <emu-clause id="sec-symbol-value">
-      <h1>Symbol value</h1>
-      <p>primitive value that represents a unique, non-String Object property key</p>
+      <h1>Symbol 值</h1>
+      <p>表示唯一的非字符的对象属性键的原始值</p>
     </emu-clause>
 
     <!-- es6num="4.3.26" -->
     <emu-clause id="sec-terms-and-definitions-symbol-type">
-      <h1>Symbol type</h1>
-      <p>set of all possible Symbol values</p>
+      <h1>Symbol 类型</h1>
+      <p>所有可能的 Symbol 值的集合</p>
     </emu-clause>
 
     <!-- es6num="4.3.27" -->
     <emu-clause id="sec-symbol-object">
-      <h1>Symbol object</h1>
-      <p>member of the Object type that is an instance of the standard built-in `Symbol` constructor</p>
+      <h1>Symbol 对象</h1>
+      <p>Object 类型的成员，是内置标准构造函数 `Symbol` 的实例</p>
     </emu-clause>
 
     <!-- es6num="4.3.28" -->
     <emu-clause id="sec-terms-and-definitions-function">
-      <h1>function</h1>
-      <p>member of the Object type that may be invoked as a subroutine</p>
+      <h1>函数</h1>
+      <p>可作为子程序调用的 Object 类型的成员</p>
       <emu-note>
-        <p>In addition to its properties, a function contains executable code and state that determine how it behaves when invoked. A function's code may or may not be written in ECMAScript.</p>
+        <p>除了其属性之外，函数还包含可执行代码和状态，来决定其调用时的行为方式。函数的代码可以用 ECMAScript 编写，也可以不用 ECMAScript 编写。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.29" -->
     <emu-clause id="sec-built-in-function">
-      <h1>built-in function</h1>
-      <p>built-in object that is a function</p>
+      <h1>内置函数</h1>
+      <p>函数形式的内置对象</p>
       <emu-note>
-        <p>Examples of built-in functions include `parseInt` and `Math.exp`. An implementation may provide implementation-dependent built-in functions that are not described in this specification.</p>
+        <p>内置函数的示例包括 `parseInt` 和 `Math.exp`。ECMAScript 实现可提供在本规范中未描述的与其实现相关的内置函数。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.30" -->
     <emu-clause id="sec-property">
-      <h1>property</h1>
-      <p>part of an object that associates a key (either a String value or a Symbol value) and a value</p>
+      <h1>属性</h1>
+      <p>对象的一部分，其将一个键（ String 值或 Symbol 值）与一个值相关联</p>
       <emu-note>
-        <p>Depending upon the form of the property the value may be represented either directly as a data value (a primitive value, an object, or a function object) or indirectly by a pair of accessor functions.</p>
+        <p>根据属性的形式，值可以直接表示为数据值（原始值、对象或函数对象）或间接由一对访问器函数表示。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.31" -->
     <emu-clause id="sec-method">
-      <h1>method</h1>
-      <p>function that is the value of a property</p>
+      <h1>方法</h1>
+      <p>作为属性值的函数</p>
       <emu-note>
-        <p>When a function is called as a method of an object, the object is passed to the function as its *this* value.</p>
+        <p>当函数作为某对象的方法来调用时， 该对象将作为 *this* 值传递给该函数。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.32" -->
     <emu-clause id="sec-built-in-method">
-      <h1>built-in method</h1>
-      <p>method that is a built-in function</p>
+      <h1>内置方法</h1>
+      <p>实为内置函数的方法</p>
       <emu-note>
-        <p>Standard built-in methods are defined in this specification, and an ECMAScript implementation may specify and provide other additional built-in methods.</p>
+        <p>本规范定义了标准的内置方法，而 ECMAScript 实现也可指定和提供其他额外的内置方法。</p>
       </emu-note>
     </emu-clause>
 
     <!-- es6num="4.3.33" -->
     <emu-clause id="sec-attribute">
-      <h1>attribute</h1>
-      <p>internal value that defines some characteristic of a property</p>
+      <h1>特性</h1>
+      <p>定义属性某些特征的内部值</p>
     </emu-clause>
 
     <!-- es6num="4.3.34" -->
     <emu-clause id="sec-own-property">
-      <h1>own property</h1>
-      <p>property that is directly contained by its object</p>
+      <h1>自有属性</h1>
+      <p>由其对象直接拥有的属性</p>
     </emu-clause>
 
     <!-- es6num="4.3.35" -->
     <emu-clause id="sec-inherited-property">
-      <h1>inherited property</h1>
-      <p>property of an object that is not an own property but is a property (either own or inherited) of the object's prototype</p>
+      <h1>继承属性</h1>
+      <p>虽非对象自有属性但却是对象的原型对象（自有或或继承）的属性</p>
     </emu-clause>
   </emu-clause>
 
   <!-- es6num="4.4" -->
   <emu-clause id="sec-organization-of-this-specification">
-    <h1>Organization of This Specification</h1>
-    <p>The remainder of this specification is organized as follows:</p>
-    <p>Clause 5 defines the notational conventions used throughout the specification.</p>
-    <p>Clauses 6-9 define the execution environment within which ECMAScript programs operate.</p>
-    <p>Clauses 10-16 define the actual ECMAScript programming language including its syntactic encoding and the execution semantics of all language features.</p>
-    <p>Clauses 17-26 define the ECMAScript standard library. It includes the definitions of all of the standard objects that are available for use by ECMAScript programs as they execute.</p>
+    <h1>本规范文档组织</h1>
+    <p>本规范的其余部分组织如下：</p>
+    <p>第 5 章 定义整个规范中使用的符号约定。</p>
+    <p>第 6 - 9 章 定义 ECMAScript 程序操作的执行环境。</p>
+    <p>第 10 - 16 章 定义实际的 ECMAScript 编程语言和语法编码，以及所有语言功能的执行语义。</p>
+    <p>第 17 - 26节定义了 ECMAScript 标准库，包括 ECMAScript 程序在执行时可用的所有标准对象的定义。</p>
   </emu-clause>
 </emu-clause>
 
